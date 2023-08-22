@@ -1,0 +1,21 @@
+service: serverless-mongo
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-west-2
+
+functions:
+  createUser:
+    handler: src/handlers/createUser.handler
+    events:
+      - httpApi:
+          path: /users
+          method: post
+  getUsers:
+    handler: src/handlers/getUsers.handler
+    events:
+      - httpApi:
+          path: /users
+          method: get
